@@ -14,11 +14,6 @@
 	
 */
 
-
-
-
-
-
 public void nextPermutation(int[] A) {
     if(A == null || A.length <= 1) return;
     int i = A.length - 2;
