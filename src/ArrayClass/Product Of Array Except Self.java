@@ -22,12 +22,12 @@ public class MultiPlyArray {
         int len=A.length;
         int[] B=new int[len];
         if(len!=0){
-            //先算下三角
+            //先算下三角 从前往后[i,len-1]
             B[0]=1;
             for(int i=1;i<len;i++){
                 B[i]=B[i-1]*A[i-1];
             }
-            //算上三角
+            //算上三角	从后往前[len-2,0]
             int temp=1;
             for(int j=len-2;j>=0;j--){
                 temp=temp*A[j+1];

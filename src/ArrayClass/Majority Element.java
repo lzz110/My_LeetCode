@@ -45,7 +45,7 @@ public int MoreThanHalfNum_SolutionbyHash(int[] array) {
 			map.put(array[i],++count);
 		}
 	}
-	map.entrySet().iterator();
+	
 	Iterator iter=map.entrySet().iterator();
 	while(iter.hasNext()){
 		Map.Entry entry = (Map.Entry) iter.next();
@@ -58,7 +58,7 @@ public int MoreThanHalfNum_SolutionbyHash(int[] array) {
 
 	return 0;
 }
-
+//如果数组中不存在众数 [1,2,3]count=3 但是不是众数 需要判断
 public int MoreThanHalfNum_Solutionbycount(int[] array) {
 	int temp=0,count=0;
 	for(int i=0;i<array.length;i++){

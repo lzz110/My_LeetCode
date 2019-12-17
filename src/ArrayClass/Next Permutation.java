@@ -17,13 +17,13 @@
 public void nextPermutation(int[] A) {
     if(A == null || A.length <= 1) return;
     int i = A.length - 2;
-    while(i >= 0 && A[i] >= A[i + 1]) i--; // Find 1st id i that breaks descending order
-    if(i >= 0) {                           // If not entirely descending
-        int j = A.length - 1;              // Start from the end
-        while(A[j] <= A[i]) j--;           // Find rightmost first larger id j
-        swap(A, i, j);                     // Switch i and j
+    while(i >= 0 && A[i] >= A[i + 1]) i--; // 找到第一个不按降序排列的id i
+    if(i >= 0) {                           // 如果不是完全下降
+        int j = A.length - 1;              // j 从最后面开始
+        while(A[j] <= A[i]) j--;           // 找到最右边第一个大的id j
+        swap(A, i, j);                     // 交换 i j 
     }
-    reverse(A, i + 1, A.length - 1);       // Reverse the descending sequence
+    reverse(A, i + 1, A.length - 1);       // 反转降序序列
 }
 
 public void swap(int[] A, int i, int j) {
