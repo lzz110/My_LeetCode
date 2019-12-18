@@ -26,7 +26,7 @@ public void backtrack(List<List<String>> list, List<String> tempList, String s, 
       list.add(new ArrayList<>(tempList));
    else{
       for(int i = start; i < s.length(); i++){
-         if(isPalindrome(s, start, i)){
+         if(isPalindrome(s, start, i)){		//判断是否是回文子串
             tempList.add(s.substring(start, i + 1));
             backtrack(list, tempList, s, i + 1);
             tempList.remove(tempList.size() - 1);

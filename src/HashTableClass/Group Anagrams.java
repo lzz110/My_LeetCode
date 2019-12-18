@@ -26,13 +26,13 @@ public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map= new HashMap<>();
         for (String str : strs) {
             char[] tmp = str.toCharArray();
-            Arrays.sort(tmp);
-            String keyStr = String.valueOf(tmp);
+            Arrays.sort(tmp);							//对当前字符串排序
+            String keyStr = String.valueOf(tmp);		
             if (! map.containsKey(keyStr)) map.put(keyStr,new ArrayList<String>());
 //            map.get(keyStr).add(str);
             List<String> strings = map.get(keyStr);     //这里是地址传递 加在 keystr 对应的value中
-            strings.add(str);
-//            List<String> strings = new ArrayList<>(map.get(keyStr));  //如果是new 的话就是新的地址了
+            strings.add(str);				//将未排序的字符串添加到 map的value 中
+//          List<String> strings = new ArrayList<>(map.get(keyStr));  //如果是new 的话就是新的地址了
         }
         return new ArrayList<>(map.values());	//map.values() 返回的是 List<String>集合
 }

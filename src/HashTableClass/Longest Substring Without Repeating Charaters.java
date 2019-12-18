@@ -6,7 +6,7 @@
 	输入: "abcabcbb"
 	输出: 3 
 思路：
-	标签：滑动窗口
+	标签：滑动窗口 哈系表
 	暴力解法时间复杂度较高，会达到 O(n^2)，故而采取滑动窗口的方法降低时间复杂度
 	定义一个 map 数据结构存储 (k, v)，其中 key 值为字符，value 值为字符位置 +1，加 1 表示从字符位置后一个才开始不重复
 	我们定义不重复子串的开始位置为 start，结束位置为 end
@@ -21,10 +21,10 @@ public int lengthOfLongestSubstring(String s) {
         for (int end = 0, start = 0; end < n; end++) {
             char alpha = s.charAt(end);
             if (map.containsKey(alpha)) {
-                start = Math.max(map.get(alpha), start);
+                start = Math.max(map.get(alpha), start);		//更新start
             }
-            ans = Math.max(ans, end - start + 1);
-            map.put(alpha, end + 1);
+            ans = Math.max(ans, end - start + 1);	//更新ans
+            map.put(alpha, end + 1);	//
         }
         return ans;
 }
@@ -46,4 +46,26 @@ public int lengthOfLongestSubstring(String s) {
 	}
 	return ans;
 }
+
+
+//暴力算法
+public int lengthOfLongestSubstring(String s) {
+	int n = s.length();
+	int ans = 0;
+	for (int i = 0; i < n; i++)
+		for (int j = i + 1; j <= n; j++)
+			if (allUnique(s, i, j)) ans = Math.max(ans, j - i);
+	return ans;
+}
+
+public boolean allUnique(String s, int start, int end) {
+	Set<Character> set = new HashSet<>();
+	for (int i = start; i < end; i++) {
+		Character ch = s.charAt(i);
+		if (set.contains(ch)) return false;
+		set.add(ch);
+	}
+	return true;
+}
+
 

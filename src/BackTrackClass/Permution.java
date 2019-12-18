@@ -15,7 +15,7 @@
 		  [3,1,2],
 		  [3,2,1]
 		]
-	Permution II(有重复)
+	Permution II(有重复)	需要一个标志位记录走过的数字
 */
 
 
@@ -31,10 +31,10 @@ private void backtrack(List<List<Integer>> list, List<Integer> tempList, int [] 
       list.add(new ArrayList<>(tempList));
    } else{
       for(int i = 0; i < nums.length; i++){ 
-         if(tempList.contains(nums[i])) continue; // element already exists, skip
+         if(tempList.contains(nums[i])) continue; // 元素已经存在 跳过
          tempList.add(nums[i]);
          backtrack(list, tempList, nums);
-         tempList.remove(tempList.size() - 1);
+         tempList.remove(tempList.size() - 1);	状态重置 将最后一个数移除 继续递归
       }
    }
 } 
